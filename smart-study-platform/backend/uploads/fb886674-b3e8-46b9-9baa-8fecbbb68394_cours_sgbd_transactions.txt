@@ -1,0 +1,17 @@
+Introduction aux Transactions et Proprietes ACID en SGBD
+
+Une transaction est une unite logique de traitement regroupant une sequence d'operations de lecture et d'ecriture sur une base de donnees. Pour preserver la fiabilite et la consistance du systeme, toute transaction doit respecter les 4 proprietes ACID :
+
+1. Atomicite (Atomicity) :
+Toutes les operations de la transaction sont executees avec succes, ou aucune ne l'est (principe du tout ou rien). En cas d'anomalie, un Rollback restaure l'etat initial.
+
+2. Coherence (Consistency) :
+La transaction fait passer la base d'un etat valide a un autre etat valide, en respectant l'ensemble des contraintes d'integrite, de cles etrangeres et de verifications.
+
+3. Isolation (Isolation) :
+Les transactions concurrentes ne doivent pas interf?rer entre elles. Les differents niveaux d'isolation sont Read Uncommitted, Read Committed, Repeatable Read et Serializable.
+
+4. Durabilite (Durability) :
+Une fois la transaction validee (Commit), ses modifications sont enregistrees de maniere permanente sur disque via le journal des transactions (WAL - Write Ahead Logging).
+
+Les verrous (Locks) partages (S) et exclusifs (X) ainsi que le protocole 2PL (Two-Phase Locking) previennent les interblocages et les lectures sales.

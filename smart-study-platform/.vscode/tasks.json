@@ -1,0 +1,104 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Backend: Lancer Spring Boot (Jar)",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-Dfile.encoding=UTF-8",
+        "-jar",
+        "target/smart-study-platform-1.0.0.jar"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*Starting SmartStudyApplication.*",
+          "endsPattern": ".*Started SmartStudyApplication.*"
+        }
+      },
+      "presentation": {
+        "group": "servers",
+        "panel": "dedicated",
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "Backend: Compiler Maven (mvn package)",
+      "type": "shell",
+      "command": "cmd.exe",
+      "args": [
+        "/c",
+        "mvnw.cmd",
+        "clean",
+        "package",
+        "-DskipTests"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Frontend: Lancer Vite (npm run dev)",
+      "type": "shell",
+      "command": "cmd.exe",
+      "args": [
+        "/c",
+        "npm",
+        "run",
+        "dev"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/frontend"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*VITE.*",
+          "endsPattern": ".*Local:.*http://localhost:.*"
+        }
+      },
+      "presentation": {
+        "group": "servers",
+        "panel": "dedicated",
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "🚀 Lancer Toute la Plateforme (Backend + Frontend)",
+      "dependsOn": [
+        "Backend: Lancer Spring Boot (Jar)",
+        "Frontend: Lancer Vite (npm run dev)"
+      ],
+      "dependsOrder": "parallel",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}

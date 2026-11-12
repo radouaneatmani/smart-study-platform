@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot - SmartStudyApplication",
+      "request": "launch",
+      "mainClass": "com.smartstudy.platform.SmartStudyApplication",
+      "projectName": "smart-study-platform",
+      "vmArgs": "-Dfile.encoding=UTF-8",
+      "cwd": "${workspaceFolder}/backend",
+      "env": {
+        "SPRING_PROFILES_ACTIVE": "default"
+      }
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Navigateur - Ouvrir Smart Study Platform",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/frontend/src"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "🚀 Debug Full Stack (Backend Java + Browser)",
+      "configurations": [
+        "Spring Boot - SmartStudyApplication",
+        "Navigateur - Ouvrir Smart Study Platform"
+      ]
+    }
+  ]
+}
